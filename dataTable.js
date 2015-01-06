@@ -1168,7 +1168,7 @@
 					/* Set the title of the column if it is user defined (not what was auto detected) */
 					if ( oSettings.aoColumns[i].sTitle != nTh.innerHTML )
 					{
-						nTh.innerHTML = typeof title == "function" ?  oSettings.aoColumns[i].sTitle() : oSettings.aoColumns[i].sTitle;
+						nTh.innerHTML = oSettings.aoColumns[i].sTitle;
 					}
 				}
 			}
@@ -1180,7 +1180,7 @@
 				for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
 				{
 					nTh = oSettings.aoColumns[i].nTh;
-					nTh.innerHTML = typeof title == "function" ?  oSettings.aoColumns[i].sTitle() : oSettings.aoColumns[i].sTitle;
+					nTh.innerHTML = oSettings.aoColumns[i].sTitle;
 					nTh.setAttribute('tabindex', '0');
 					
 					if ( oSettings.aoColumns[i].sClass !== null )
@@ -4166,8 +4166,7 @@
 		
 			for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
 			{
-				var sTitle = typeof title == "function" ?  oSettings.aoColumns[i].sTitle() : oSettings.aoColumns[i].sTitle;
-				sTitle = sTitle.replace( /<.*?>/g, "" );
+				var sTitle = aoColumns[i].sTitle.replace( /<.*?>/g, "" );
 				nTh = aoColumns[i].nTh;
 				nTh.removeAttribute('aria-sort');
 				nTh.removeAttribute('aria-label');
